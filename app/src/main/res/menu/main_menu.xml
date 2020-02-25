@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profile"
+        android:title="@string/profileTitle"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/signOut"
+        android:title="@string/signOutTitle"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/about"
+        android:title="@string/aboutTitle"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/exit"
+        android:title="@string/exitTitle"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/searchTitle"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/sort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sortTitle"
+        app:showAsAction="ifRoom"/>
+</menu>

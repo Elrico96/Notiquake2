@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Notiquake</string>
+    <string name="logoText">NOTIQUAKE</string>
+    <string name="loginText">Sign In</string>
+    <string name="registerText">Sign Up</string>
+    <string name="btnRegister">Sign Up</string>
+    <string name="nameHint">Full name</string>
+    <string name="usernameHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="confirmPasswordHint">Confirm Password</string>
+    <string name="resetPassword">Forgot Password!</string>
+    <string name="alreadySignedUp">Already have account? Sign in here</string>
+    <string name="checkBoxText">Remember Me</string>
+    <string name="requiredFieldError">Required Field</string>
+    <string name="successfulAlert">"Registered, Please check your email for verification."</string>
+    <string name="emptyEditTex"> </string>
+    <string name="retryTxt">RETRY</string>
+    <string name="btnSubmit">SEND MY PASSWORD</string>
+    <string name="no_connection">No Internet Connection</string>
+    <string name="no_earthquakes_found">No Earthquakes Found</string>
+
+    <!--Strings for the SignIn Activity -->
+    <string name="failedLoginTxt">INCORRECT USERNAME &amp; PASSWORD</string>
+
+    <!--Strings for the SignUp Activity-->
+    <string name="passwordError">PASSWORD DONT MATCH</string>
+    <string name="regFailedText">REGISTRATION FAILED</string>
+
+    <string name="resetPassToast">PASSWORD SEND TO YOUR EMAIL</string>
+
+    <!--Menu Items Titles-->
+    <string name="profileTitle">My Profile</string>
+    <string name="signOutTitle">Sign Out</string>
+    <string name="aboutTitle">About</string>
+    <string name="exitTitle">Exit</string>
+    <string name="sortTitle">Sort</string>
+    <string name="searchTitle">Search</string>
+    <string name="tv_date">TextView</string>
+
+    <!--Earthquake Activity-->
+    <string name="perceived_strength">Perceived Strength</string>
+    <string name="more_information">More Information</string>
+
+
+</resources>

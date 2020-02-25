@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "206194361494",
+    "firebase_url": "https://notiquakedb.firebaseio.com",
+    "project_id": "notiquakedb",
+    "storage_bucket": "notiquakedb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206194361494:android:67f62ea0dbb794fb1c6eb7",
+        "android_client_info": {
+          "package_name": "com.example.notiquake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206194361494-ho0dn239jmjb93pp1374gdn24rl0v7il.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notiquake",
+            "certificate_hash": "38a040b3951d21af604aa3b200819e1080403064"
+          }
+        },
+        {
+          "client_id": "206194361494-6h0fsh7n75opjc5sp6e300o5j2c8ca39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsIQJzODiGcPD4ZMhZB0CnNsSDy5emewc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206194361494-6h0fsh7n75opjc5sp6e300o5j2c8ca39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
