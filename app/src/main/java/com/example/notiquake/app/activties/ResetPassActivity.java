@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ResetPassActivity extends AppCompatActivity {
 
     private EditText userEmail;
-    private Button  btnSubmit;
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
@@ -29,12 +29,13 @@ public class ResetPassActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_pass);
 
+
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
 
-        userEmail = findViewById(R.id.ed_email);
-        btnSubmit = findViewById(R.id.btnSubmit);
+        userEmail = findViewById(R.id.ed_email_add);
+        Button btnSubmit = findViewById(R.id.btnSubmit);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,8 +56,13 @@ public class ResetPassActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
                             Toast.makeText(ResetPassActivity.this ,R.string.resetPassToast,Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(new Intent(ResetPassActivity.this,LoginActivity.class));
                         }else {
+                            progressDialog.dismiss();
                             Toast.makeText(ResetPassActivity.this ,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                            userEmail.setError("Invalid Email");
+                            userEmail.setText("");
                         }
                     }
                 });

@@ -6,34 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".app.activties.ResetPassActivity">
 
-    <EditText
-        android:id="@+id/ed_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:hint="@string/usernameHint"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/mainColorOne"
-        android:textColorHint="@color/mainColorOne"
-        app:backgroundTint="@color/mainColorOne"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/btn_signin_design"
-        android:text="@string/btnSubmit"
-        android:textColor="@color/mainColorOne"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_email" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/reset_password_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/mainColorOne"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ed_email_add" />
+
+        <EditText
+            android:id="@+id/ed_email_add"
+            android:layout_width="379dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="@string/usernameHint"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/mainColorOne"
+            android:textColorHint="@color/mainColorOne"
+            app:backgroundTint="@color/mainColorOne"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_signin_design"
+            android:text="@string/btnSubmit"
+            android:textColor="@color/mainColorOne"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_email_add" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

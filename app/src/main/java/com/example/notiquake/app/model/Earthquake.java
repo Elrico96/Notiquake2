@@ -1,14 +1,17 @@
 package com.example.notiquake.app.model;
 
-public class Earthquake {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Earthquake implements Parcelable {
     private double mag;
     private String title;
     private String place;
     private long timeInMiliseconds;
     private String url;
-    private String felt;
+    private int felt;
     private double cdi;
-    private int tsunameAlert;
+    private String tsunameAlert;
     private double longitude;
     private double latitude;
     private double depth;
@@ -20,7 +23,7 @@ public class Earthquake {
         this.url = url;
     }
 
-    public Earthquake(String title, long timeInMiliseconds, String url, String felt, double cdi, int tsunameAlert, double longitude, double latitude, double depth) {
+    public Earthquake(String title, long timeInMiliseconds, String url, int felt, double cdi, String tsunameAlert, double longitude, double latitude, double depth) {
         this.title = title;
         this.timeInMiliseconds = timeInMiliseconds;
         this.url = url;
@@ -32,7 +35,7 @@ public class Earthquake {
         this.depth = depth;
     }
 
-    public Earthquake(double mag, String title, String place, long timeInMiliseconds, String url, String felt, double cdi, int tsunameAlert, double longitude, double latitude, double depth) {
+    public Earthquake(double mag, String title, String place, long timeInMiliseconds, String url, int felt, double cdi, String tsunameAlert, double longitude, double latitude, double depth) {
         this.mag = mag;
         this.title = title;
         this.place = place;
@@ -45,6 +48,32 @@ public class Earthquake {
         this.latitude = latitude;
         this.depth = depth;
     }
+
+    protected Earthquake(Parcel in) {
+        mag = in.readDouble();
+        title = in.readString();
+        place = in.readString();
+        timeInMiliseconds = in.readLong();
+        url = in.readString();
+        felt = in.readInt();
+        cdi = in.readDouble();
+        tsunameAlert = in.readString();
+        longitude = in.readDouble();
+        latitude = in.readDouble();
+        depth = in.readDouble();
+    }
+
+    public static final Creator<Earthquake> CREATOR = new Creator<Earthquake>() {
+        @Override
+        public Earthquake createFromParcel(Parcel in) {
+            return new Earthquake(in);
+        }
+
+        @Override
+        public Earthquake[] newArray(int size) {
+            return new Earthquake[size];
+        }
+    };
 
     public double getMag() {
         return mag;
@@ -66,7 +95,7 @@ public class Earthquake {
         return url;
     }
 
-    public String getFelt() {
+    public int getFelt() {
         return felt;
     }
 
@@ -74,7 +103,7 @@ public class Earthquake {
         return cdi;
     }
 
-    public int getTsunameAlert() {
+    public String getTsunameAlert() {
         return tsunameAlert;
     }
 
@@ -88,5 +117,25 @@ public class Earthquake {
 
     public double getDepth() {
         return depth;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(mag);
+        dest.writeString(title);
+        dest.writeString(place);
+        dest.writeLong(timeInMiliseconds);
+        dest.writeString(url);
+        dest.writeInt(felt);
+        dest.writeDouble(cdi);
+        dest.writeString(tsunameAlert);
+        dest.writeDouble(longitude);
+        dest.writeDouble(latitude);
+        dest.writeDouble(depth);
     }
 }

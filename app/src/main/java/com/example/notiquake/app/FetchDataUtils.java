@@ -16,9 +16,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+
+import static okhttp3.internal.Util.UTF_8;
 
 public class FetchDataUtils {
     private static final String LOG_TAG =  FetchDataUtils.class.getSimpleName();
@@ -47,7 +48,7 @@ public class FetchDataUtils {
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if(inputStream != null){
-            InputStreamReader streamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
+            InputStreamReader streamReader = new InputStreamReader(inputStream, UTF_8);
             BufferedReader reader = new BufferedReader(streamReader);
             String line = reader.readLine();
             while (line != null){
@@ -92,10 +93,12 @@ public class FetchDataUtils {
     }
 
     private  static  List<Earthquake> extractEarthquakeFromJson(String jsonData){
-        if(TextUtils.isEmpty(jsonData)){
-            return null;
-        }
         List<Earthquake> earthquakes = new ArrayList<>();
+
+        if(TextUtils.isEmpty(jsonData)){
+            return earthquakes;
+        }
+
 
         try {
             JSONObject root = new JSONObject(jsonData);
@@ -109,20 +112,20 @@ public class FetchDataUtils {
                 String location = earthquakeFeature.getString("place");
                 long time = earthquakeFeature.getLong("time");
                 String url = earthquakeFeature.getString("url");
-                /*String noPeople = earthquakeFeature.getString("felt");
-                String cdi = earthquakeFeature.getString("cdi");
-                double strength = Double.parseDouble(cdi);
-                int tsunamiAlert = earthquakeFeature.getInt("tsunami");
+                int noPeople = earthquakeFeature.getInt("felt");
+                double cdi = earthquakeFeature.getDouble("cdi");
+
+                String tsunamiAlert = earthquakeFeature.getString("tsunami");
                 String title = earthquakeFeature.getString("title");
 
                 //Extracting the coordinates from the "coordinates" array in the geometry object
                 JSONObject earthquakeGeo = currentEarthquake.getJSONObject("geometry");
                 JSONArray  coordinates = earthquakeGeo.getJSONArray("coordinates");
-                double longitude = coordinates.getDouble(0);
-                double latitude  = coordinates.getDouble(1);
-                double depth = coordinates.getDouble(2);*/
+                double latitude = coordinates.getDouble(0);
+                double longitude  = coordinates.getDouble(1);
+                double depth = coordinates.getDouble(2);
 
-                Earthquake earthquake = new Earthquake(magnitude,location,time,url);
+                Earthquake earthquake = new Earthquake(magnitude,title,location,time,url,noPeople,cdi,tsunamiAlert,longitude,latitude,depth);
                 earthquakes.add(earthquake);
 
             }

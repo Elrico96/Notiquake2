@@ -39,6 +39,7 @@
                 android:id="@+id/tv_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:maxLines="2"
                 tools:text="32km ESE of Chaloem Phra Kiat, Thailand" />
 
@@ -65,6 +66,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 tools:text="12:15 PM" />
+
         </RelativeLayout>
 
 

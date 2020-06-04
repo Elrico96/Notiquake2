@@ -82,6 +82,16 @@
                 android:ems="10"
                 android:inputType="textPassword"/>
 
+            <CheckBox
+                android:id="@+id/cbRemeberMe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/mainColorOne"
+                android:text="@string/checkBoxText"
+                android:layout_marginLeft="12dp"
+                app:buttonTint="@color/mainColorOne"
+                android:layout_marginStart="12dp" />
+
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

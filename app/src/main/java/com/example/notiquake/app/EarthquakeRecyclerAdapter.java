@@ -1,13 +1,18 @@
 package com.example.notiquake.app;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,17 +22,21 @@ import com.example.notiquake.app.model.Earthquake;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeRecyclerAdapter.ViewHolder> {
+public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeRecyclerAdapter.ViewHolder> implements Filterable {
 
     private Context context;
     private List<Earthquake> earthquakes;
+    private List<Earthquake> earthquakesAll;
 
     public EarthquakeRecyclerAdapter(Context context, List<Earthquake> earthquakes) {
         this.context = context;
         this.earthquakes = earthquakes;
+        this.earthquakesAll = new ArrayList<>(earthquakes);
     }
 
     @NonNull
@@ -39,7 +48,7 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Earthquake curremtEarthquake = earthquakes.get(position);
 
         String mag = formatMag(curremtEarthquake.getMag());
@@ -48,24 +57,75 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
         String date = formatDate(dateOject);
         String time = formatTime(dateOject);
 
-        holder.tv_magnitude.setText(mag);
-        holder.tv_place.setText(location);
-        holder.tv_date.setText(date);
-        holder.tv_time.setText(time);
+        holder.tvMagnitude.setText(mag);
+        holder.tvPlace.setText(location);
+        holder.tvDate.setText(date);
+        holder.tvTime.setText(time);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, EarthquakeActivity.class);
-                context.startActivity(intent);
+               navigatetoMoreInfo(position);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
         return earthquakes.size() ;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Earthquake> filteredList = new ArrayList<>();
+            if(constraint.toString().isEmpty()){
+                filteredList.addAll(earthquakesAll);
+            }else {
+                for (Earthquake earthquake: earthquakesAll){
+                    if (earthquake.getTitle().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        filteredList.add(earthquake);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            earthquakes.clear();
+            earthquakes.addAll((Collection<? extends Earthquake>) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    private void navigatetoMoreInfo(final int position){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(R.string.more_dialog_msg);
+        builder.setPositiveButton(R.string.more_info_yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(context, EarthquakeActivity.class);
+                intent.putExtra("EARTHQUAKE_POSITION",earthquakes.get(position));
+                context.startActivity(intent);
+            }
+        }).setNegativeButton(R.string.more_info_no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        Dialog dialog = builder.create();
+        dialog.setTitle(R.string.more_information);
+        dialog.show();
     }
 
     private String formatMag(double mag){
@@ -83,22 +143,23 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
         return  timeFormat.format(date);
     }
 
+
     public  class ViewHolder extends RecyclerView.ViewHolder{
         private CardView cardView;
-        private TextView tv_magnitude;
-        private TextView tv_place;
-        private TextView tv_date;
-        private TextView tv_time;
+        private TextView tvMagnitude;
+        private TextView tvPlace;
+        private TextView tvDate;
+        private TextView tvTime;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             cardView =  itemView.findViewById(R.id.cardView);
-            tv_magnitude = itemView.findViewById(R.id.tv_mag);
-            tv_place = itemView.findViewById(R.id.tv_location);
-            tv_date = itemView.findViewById(R.id.tv_date);
-            tv_time = itemView.findViewById(R.id.tv_time);
+            tvMagnitude = itemView.findViewById(R.id.tv_mag);
+            tvPlace = itemView.findViewById(R.id.tv_location);
+            tvDate = itemView.findViewById(R.id.tv_date);
+            tvTime = itemView.findViewById(R.id.tv_time);
 
         }
     }
