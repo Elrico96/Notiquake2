@@ -1,8 +1,6 @@
 package com.example.notiquake.app;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,8 +40,7 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item , parent ,false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -65,7 +61,10 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               navigatetoMoreInfo(position);
+                Intent intent = new Intent(context, EarthquakeActivity.class);
+                intent.putExtra("EARTHQUAKE_POSITION",earthquakes.get(position));
+                context.startActivity(intent);
+
             }
         });
     }
@@ -106,27 +105,6 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
         }
     };
 
-    private void navigatetoMoreInfo(final int position){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(R.string.more_dialog_msg);
-        builder.setPositiveButton(R.string.more_info_yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(context, EarthquakeActivity.class);
-                intent.putExtra("EARTHQUAKE_POSITION",earthquakes.get(position));
-                context.startActivity(intent);
-            }
-        }).setNegativeButton(R.string.more_info_no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        Dialog dialog = builder.create();
-        dialog.setTitle(R.string.more_information);
-        dialog.show();
-    }
 
     private String formatMag(double mag){
         DecimalFormat magformat = new DecimalFormat("0.0");

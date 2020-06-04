@@ -1,11 +1,14 @@
 package com.example.notiquake.app.activties;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notiquake.R;
@@ -63,9 +66,7 @@ public class EarthquakeActivity extends AppCompatActivity {
         tvMoreInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = earthquake.getUrl();
-                Uri earthquakeUri = Uri.parse(url);
-                startActivity(new Intent(Intent.ACTION_VIEW , earthquakeUri));
+                navigatetoMoreInfo(earthquake);
             }
         });
 
@@ -75,6 +76,28 @@ public class EarthquakeActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext() , ReportActivity.class));
             }
         });
+    }
+
+    private void navigatetoMoreInfo(final Earthquake earthquake){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.more_dialog_msg);
+        builder.setPositiveButton(R.string.more_info_yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String url = earthquake.getUrl();
+                Uri earthquakeUri = Uri.parse(url);
+                startActivity(new Intent(Intent.ACTION_VIEW , earthquakeUri));
+            }
+        }).setNegativeButton(R.string.more_info_no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        Dialog dialog = builder.create();
+        dialog.setTitle(R.string.more_information);
+        dialog.show();
     }
 
     private String formatMag(double mag){
@@ -92,10 +115,6 @@ public class EarthquakeActivity extends AppCompatActivity {
         return  dateFormat.format(date);
     }
 
-    private String formatTime(Date date){
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a z");
-        return  timeFormat.format(date);
-    }
 
     private String determineTsunamiAlert(String alert){
         if(alert.equals("1")){
