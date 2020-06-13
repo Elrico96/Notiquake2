@@ -70,39 +70,53 @@
                     app:backgroundTint="@android:color/white"
                     android:inputType="textEmailAddress" />
 
-                <EditText
-                    android:id="@+id/ed_password"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:hint="@string/passwordHint"
-                    android:padding="16dp"
-                    android:drawableLeft="@drawable/ic_lock_signup"
-                    android:drawableStart="@drawable/ic_lock_signup"
-                    android:drawablePadding="16dp"
+                    android:layout_height="match_parent"
                     android:textColorHint="@android:color/white"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@android:color/white"
-                    android:ems="10"
-                    android:inputType="textPassword" />
+                    app:passwordToggleEnabled="true">
+                    <EditText
+                        android:id="@+id/ed_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:drawableStart="@drawable/ic_lock_signup"
+                        android:drawableLeft="@drawable/ic_lock_signup"
+                        android:drawablePadding="16dp"
+                        android:ems="10"
+                        android:hint="@string/passwordHint"
+                        android:inputType="textPassword"
+                        android:padding="16dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        app:backgroundTint="@android:color/white" />
 
-                <EditText
-                    android:id="@+id/ed_confirm_password"
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:hint="@string/confirmPasswordHint"
-                    android:padding="16dp"
-                    android:drawableLeft="@drawable/ic_lock_signup"
-                    android:drawableStart="@drawable/ic_lock_signup"
-                    android:drawablePadding="16dp"
+                    android:layout_height="match_parent"
                     android:textColorHint="@android:color/white"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@android:color/white"
-                    android:ems="10"
-                    android:inputType="textPassword" />
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/ed_confirm_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:drawableStart="@drawable/ic_lock_signup"
+                        android:drawableLeft="@drawable/ic_lock_signup"
+                        android:drawablePadding="16dp"
+                        android:ems="10"
+                        android:hint="@string/confirmPasswordHint"
+                        android:inputType="textPassword"
+                        android:padding="16dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        app:backgroundTint="@android:color/white" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
             <LinearLayout

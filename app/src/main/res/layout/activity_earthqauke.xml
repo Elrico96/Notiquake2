@@ -6,116 +6,125 @@
     android:layout_height="match_parent"
     tools:context=".app.activties.EarthquakeActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginBottom="214dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="16dp"
-            android:maxLines="2"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textAlignment="center"
-            android:textAppearance="?android:textAppearanceLarge"
-            tools:text="M 5.5 - 7km W of Santa Teresa, Nicaragua" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:text="@string/perceived_strength"
-            android:textAllCaps="true"
-            android:textAppearance="?android:textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/perceived_strength"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/mag_background"
-            android:gravity="center"
-            android:padding="24dp"
-            android:textColor="@color/mainColorOne"
-            android:textSize="70sp"
-            tools:text="7.5" />
-
-
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16sp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/number_of_people"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_people"
-                android:drawableLeft="@drawable/ic_people"
-                android:drawablePadding="8dp"
-                android:paddingTop="16dp"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="65 People felt it" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16sp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/number_of_people"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_people"
+                    android:drawableLeft="@drawable/ic_people"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    tools:text="65 People felt it" />
 
 
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_date"
-                android:drawableLeft="@drawable/ic_date"
-                android:drawablePadding="8dp"
-                android:paddingTop="16dp"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Wed. 27 Nov 2019 at 09:23:42 CAT" />
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_date"
+                    android:drawableLeft="@drawable/ic_date"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    tools:text="Wed. 27 Nov 2019 at 09:23:42 CAT" />
+
+                <TextView
+                    android:id="@+id/tv_coordinates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawableLeft="@drawable/ic_location"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    tools:text="17.885°N 66.864°W" />
+
+                <TextView
+                    android:id="@+id/tv_depth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_down"
+                    android:drawableLeft="@drawable/ic_down"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    tools:text="6.0 km depth" />
+
+                <TextView
+                    android:id="@+id/tv_tsunami_alert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_warning"
+                    android:drawableLeft="@drawable/ic_warning"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    tools:text="Tsunami Alert : No" />
+
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_coordinates"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_location"
-                android:drawableLeft="@drawable/ic_location"
-                android:drawablePadding="8dp"
+                android:gravity="center_horizontal"
                 android:paddingTop="16dp"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="17.885°N 66.864°W" />
+                android:paddingBottom="16dp"
+                android:text="@string/perceived_strength"
+                android:textAllCaps="true"
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/tv_depth"
+                android:id="@+id/perceived_strength"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_down"
-                android:drawableLeft="@drawable/ic_down"
-                android:drawablePadding="8dp"
-                android:paddingTop="16dp"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="6.0 km depth" />
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/mag_background"
+                android:gravity="center"
+                android:padding="24dp"
+                android:textColor="@color/mainColorOne"
+                android:textSize="70sp"
+                tools:text="7.5" />
 
             <TextView
-                android:id="@+id/tv_tsunami_alert"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_warning"
-                android:drawableLeft="@drawable/ic_warning"
-                android:drawablePadding="8dp"
-                android:paddingTop="16dp"
-                android:textAppearance="?android:textAppearanceMedium"
-                tools:text="Tsunami Alert : No" />
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:maxLines="2"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textAlignment="center"
+                android:textAppearance="?android:textAppearanceLarge"
+                tools:text="M 5.5 - 7km W of Santa Teresa, Nicaragua" />
 
 
         </LinearLayout>
-
-
-    </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/tv_more_info"
@@ -130,7 +139,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@id/scrollview" />
 
     <TextView
         android:id="@+id/tv_tell_us"

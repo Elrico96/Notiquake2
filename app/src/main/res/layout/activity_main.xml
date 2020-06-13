@@ -7,68 +7,78 @@
     android:background="@drawable/back_design"
     tools:context=".app.activties.MainActivity">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="50dp">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="200dp">
+
+                <Button
+                    android:id="@+id/btnSignIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/btn_design"
+                    android:text="@string/loginText"
+                    android:textColor="@color/mainColorOne" />
+
+                <Button
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:background="@drawable/btn_register"
+                    android:text="@string/btnRegister"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="50dp">
+
                 <ImageView
                     android:id="@+id/login_logo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/logoText"
                     android:layout_centerInParent="true"
+                    android:contentDescription="@string/logoText"
                     android:padding="32dp"
                     app:srcCompat="@mipmap/ic_login_icon"
                     tools:ignore="VectorDrawableCompat" />
+
                 <TextView
                     android:id="@+id/logo_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/login_logo"
-                    android:padding="16dp"
-                    android:textColor="@android:color/white"
-                    android:textAllCaps="true"
                     android:fontFamily="sans-serif-light"
+                    android:padding="16dp"
+                    android:text="@string/logoText"
+                    android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:text="@string/logoText" />
-        </RelativeLayout>
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
 
-           <LinearLayout
-               android:orientation="vertical"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-
-               <Button
-                   android:id="@+id/btnSignIn"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="70dp"
-                   android:layout_marginRight="70dp"
-                   android:layout_marginBottom="24dp"
-                   android:layout_gravity="bottom"
-                   android:textColor="@color/mainColorOne"
-                   android:background="@drawable/btn_design"
-                   android:text="@string/loginText" />
-
-               <Button
-                   android:id="@+id/btnSignUp"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="70dp"
-                   android:layout_marginRight="70dp"
-                   android:textColor="@android:color/white"
-                   android:background="@drawable/btn_register"
-                   android:text="@string/btnRegister" />
-
-           </LinearLayout>
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,7 +50,6 @@ public class EarthquakeActivity extends AppCompatActivity {
 
         Date dateOject = new Date(earthquake.getTimeInMiliseconds());
         tvdate.setText(formatDate(dateOject));
-
         String longitude = formatCoordinate(earthquake.getLongitude())+ determineLongitude(earthquake.getLongitude());
         String latitude =  formatCoordinate(earthquake.getLatitude())+ determineLatitude(earthquake.getLatitude());
 
