@@ -122,8 +122,6 @@ public class ListEarthquakesActivity extends AppCompatActivity implements Loader
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if(key.equals(getString(R.string.settings_min_magnitude_key)) || key.equals(getString(R.string.settings_order_by_key))){
                 empty_view.setVisibility(View.GONE);
-                loadingIndicator = findViewById(R.id.progress_indicator);
-                loadingIndicator.setVisibility(View.VISIBLE);
             getLoaderManager().restartLoader(EARTHQUAKE_LOADER_ID,null,this);
         }
     }

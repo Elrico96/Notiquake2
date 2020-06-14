@@ -20,10 +20,11 @@
     <string name="no_earthquakes_found">No Earthquakes Found</string>
     <string name="reset_password_title">Reset your Password.</string>
     <string name="signin_connection_error">CHECK YOU INTERNET CONNECT!!</string>
+    <string name="rg_toast_text">Please select an answer</string>
 
-    <string name="more_dialog_msg">Proceed  to see more information about this earthquake</string>
-    <string name="more_info_yes">Yes</string>
-    <string name="more_info_no">No</string>
+    <string name="more_dialog_msg">Nivagate  more information about the earthquake</string>
+    <string name="more_info_yes">Proceed</string>
+    <string name="more_info_no">Cancel</string>
     <!--Strings for the SignIn Activity -->
     <string name="failedLoginTxt">INCORRECT USERNAME &amp; PASSWORD</string>
 
