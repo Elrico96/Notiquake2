@@ -21,8 +21,9 @@
     <string name="reset_password_title">Reset your Password.</string>
     <string name="signin_connection_error">CHECK YOU INTERNET CONNECT!!</string>
     <string name="rg_toast_text">Please select an answer</string>
+    <string name="submit_toast_text">Please fill in all flied and answer questions</string>
 
-    <string name="more_dialog_msg">Nivagate  more information about the earthquake</string>
+    <string name="more_dialog_msg">View more information about the earthquake</string>
     <string name="more_info_yes">Proceed</string>
     <string name="more_info_no">Cancel</string>
     <!--Strings for the SignIn Activity -->
@@ -37,7 +38,7 @@
     <!--Menu Items Titles-->
     <string name="profileTitle">My Profile</string>
     <string name="signOutTitle">Sign Out</string>
-    <string name="aboutTitle">About</string>
+    <string name="setAlerts">Set Alerts</string>
     <string name="exitTitle">Exit</string>
     <string name="sortTitle">Sort</string>
     <string name="searchTitle">Search</string>
@@ -126,6 +127,16 @@
     <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
     <string name="settings_order_by_most_recent_label">Most Recent</string>
     <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="reportLabel">Feedback</string>
+    <string name="earthQLabel">Earthquake</string>
+    <string name="earthquakeTab_title">Earthquakes</string>
+    <string name="earthquakeNewsTab_title">Earthquake News</string>
+
+    <string name="author_null">Unknown</string>
 
 
 </resources>

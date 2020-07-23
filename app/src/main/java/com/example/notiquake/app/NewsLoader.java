@@ -6,15 +6,15 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.notiquake.app.model.Earthquake;
+import com.example.notiquake.app.model.News;
 
 import java.util.List;
 
-public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
+public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     private String url;
 
-    public EarthquakeLoader(@NonNull Context context, String url) {
+    public NewsLoader(@NonNull Context context, String url) {
         super(context);
         this.url = url;
     }
@@ -26,10 +26,10 @@ public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
 
     @Nullable
     @Override
-    public List<Earthquake> loadInBackground() {
+    public List<News> loadInBackground() {
         if(url == null){
             return null;
         }
-        return FetchDataUtils.fetchEarthquakeData(url);
+        return FetchDataUtils.fetchNewsData(url);
     }
 }

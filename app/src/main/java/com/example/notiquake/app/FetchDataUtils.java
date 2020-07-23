@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.notiquake.app.model.Earthquake;
+import com.example.notiquake.app.model.News;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +34,17 @@ public class FetchDataUtils {
             e.printStackTrace();
         }
         return extractEarthquakeFromJson(jsonResponse);
+    }
+
+    public  static List<News> fetchNewsData(String requestUrl){
+        URL url = createUrl(requestUrl);
+        String jsonResponse = null;
+        try {
+            jsonResponse = makeHttpRequest(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return extractNewsFromJson(jsonResponse);
     }
 
     private static URL createUrl(String stringUrl){
@@ -134,6 +146,37 @@ public class FetchDataUtils {
         }
 
         return earthquakes;
+    }
+
+    private  static  List<News> extractNewsFromJson(String jsonData){
+        List<News> articles = new ArrayList<>();
+
+        if(TextUtils.isEmpty(jsonData)){
+            return articles;
+        }
+
+
+        try {
+                JSONObject root = new JSONObject(jsonData);
+                JSONArray rootArtciles = root.getJSONArray("articles");
+
+                for (int i = 0 ; i < rootArtciles.length() ; i++){
+                    JSONObject currentArticles = rootArtciles.getJSONObject(i);
+
+                    String author = currentArticles.isNull("author")? "Unknown":currentArticles.getString("author");
+                    String title = currentArticles.isNull("title")?"":currentArticles.getString("title");
+                    String url = currentArticles.isNull("url")?"":currentArticles.getString("url");
+                    String urlToImage = currentArticles.isNull("urlToImage")?"":currentArticles.getString("urlToImage");
+                    String pulishedDate = currentArticles.isNull("publishedAt")?"":currentArticles.getString("publishedAt");
+
+                    News news = new News(urlToImage,title,url,pulishedDate,author);
+                    articles.add(news);
+                }
+
+        } catch (JSONException e) {
+            Log.e(LOG_TAG,"Problem parsing the earthquake JSON results",e);
+        }
+        return articles;
     }
 
 }

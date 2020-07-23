@@ -1,9 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/mainColorOne</item>
+
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="linkText">
@@ -12,9 +17,19 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+    </style>
+
     <style name="questionText">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="tabLayoutStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>

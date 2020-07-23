@@ -48,7 +48,7 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Earthquake curremtEarthquake = earthquakes.get(position);
+        final Earthquake curremtEarthquake = earthquakes.get(position);
 
         String mag = formatMag(curremtEarthquake.getMag());
         String location = curremtEarthquake.getPlace();
@@ -69,7 +69,7 @@ public class EarthquakeRecyclerAdapter extends  RecyclerView.Adapter<EarthquakeR
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, EarthquakeActivity.class);
-                intent.putExtra("EARTHQUAKE_POSITION",earthquakes.get(position));
+                intent.putExtra("EARTHQUAKE_POSITION",curremtEarthquake);
                 context.startActivity(intent);
 
             }

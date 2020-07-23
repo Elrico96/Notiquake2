@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="60dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/articleTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:maxLines="2"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgView"
+        app:layout_constraintTop_toTopOf="@+id/imgView"
+        tools:text="The Captial city of Chile has been shaken by a earthquake" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:textStyle="italic"
+        app:fontFamily="sans-serif-m"
+        app:layout_constraintBottom_toBottomOf="@+id/imgView"
+        app:layout_constraintStart_toEndOf="@+id/imgView"
+        tools:text="Reuters Editorial" />
+
+    <TextView
+        android:id="@+id/publishedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textStyle="italic"
+        app:fontFamily="sans-serif-m"
+        app:layout_constraintBottom_toBottomOf="@+id/author"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="2020-06-24" />
+</androidx.constraintlayout.widget.ConstraintLayout>

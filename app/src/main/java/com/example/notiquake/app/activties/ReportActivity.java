@@ -53,7 +53,7 @@ public class ReportActivity extends AppCompatActivity {
 
     private static final int REQUEST_LOCATION =1;
     private static final String TAG_ID = "ReportAct";
-    private  final String RG_TOAST_TEXT = getString(R.string.rg_toast_text);
+
 
     private RadioGroup radioGroup_no1;
     private RadioGroup rg_question1;
@@ -144,6 +144,8 @@ public class ReportActivity extends AppCompatActivity {
 
     public void submitReport(){
 
+        final String RG_TOAST_TEXT = getString(R.string.rg_toast_text);
+
         if(radioGroup_no1.getCheckedRadioButtonId() == -1){
             Toast.makeText(getApplicationContext(), RG_TOAST_TEXT , Toast.LENGTH_SHORT).show();
         }else{
@@ -214,7 +216,6 @@ public class ReportActivity extends AppCompatActivity {
         String body = generateEmailBody(providedName,time);
         SendEmail sendEmail = new SendEmail(getApplicationContext(),providedEmail,emailSubject,body);
         sendEmail.execute();
-
         saveUserReport(report);
     }
 
@@ -292,7 +293,7 @@ public class ReportActivity extends AppCompatActivity {
     }
 
     private void saveUserReport(Report report) {
-        firebaseDatabase.child(firebaseUser.getUid()).setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
+        firebaseDatabase.child("reports").child(firebaseUser.getUid()).setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();

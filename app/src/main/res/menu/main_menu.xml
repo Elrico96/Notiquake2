@@ -5,11 +5,7 @@
     <item
         android:id="@+id/signOut"
         android:title="@string/signOutTitle"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/about"
-        android:title="@string/aboutTitle"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/exit"
         android:title="@string/exitTitle"
@@ -28,4 +24,9 @@
         android:icon="@drawable/ic_sort"
         android:title="@string/sortTitle"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/news"
+        android:icon="@drawable/ic_read"
+        android:title="@string/earthquakeNewsTab_title"
+        app:showAsAction="always" />
 </menu>
